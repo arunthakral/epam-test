@@ -1,10 +1,12 @@
 package com.epam.test.service.impl;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.epam.test.daos.OrderDaoImpl;
 import com.epam.test.model.DiscountEntryItem;
 import com.epam.test.model.OrderModel;
 import com.epam.test.model.OrderRequest;
@@ -17,6 +19,9 @@ public class OrderServiceImpl implements OrderService {
 	
 	@Autowired
 	PromotionService promotionService;
+	
+	@Autowired
+	OrderDaoImpl orderDao;
 	
 	@Override
 	public OrderModel placeOrder(OrderRequest orderRequest) {
@@ -44,7 +49,19 @@ public class OrderServiceImpl implements OrderService {
 			
 			
 		});
+		orderDao.addOrder(order);
 		return order;
+
+	}
+	
+	@Override
+	public List<OrderModel> getAllOrders() {
+		return orderDao.getAllOrders();
+	}
+
+	@Override
+	public OrderModel getOrderById(long orderId) {
+		return orderDao.getOrderById(orderId);
 
 	}
 }

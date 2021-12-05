@@ -13,6 +13,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import com.epam.test.daos.OrderDaoImpl;
 import com.epam.test.enums.ProductEnum;
 import com.epam.test.model.DiscountEntryItem;
 import com.epam.test.model.OrderEntryItem;
@@ -29,6 +30,9 @@ public class OrderServiceImplTest {
 
 	@InjectMocks
 	OrderServiceImpl orderService;
+	
+	@Mock
+	OrderDaoImpl orderDao;
 
 	@Test
 	public void TestplaceOrder() {

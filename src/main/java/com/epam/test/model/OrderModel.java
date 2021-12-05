@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Currency;
 import java.util.List;
 import java.util.Locale;
+import java.util.Objects;
 
 import com.epam.test.util.OrderUtil;
 
@@ -85,4 +86,27 @@ public class OrderModel {
 	public void setCurrency(Currency currency) {
 		this.currency = currency;
 	}
+
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(currency, customerId, items, orderDate, orderId, totalPrice);
+	}
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		OrderModel other = (OrderModel) obj;
+		return Objects.equals(currency, other.currency) && Objects.equals(customerId, other.customerId)
+				&& Objects.equals(items, other.items) && Objects.equals(orderDate, other.orderDate)
+				&& orderId == other.orderId && Objects.equals(totalPrice, other.totalPrice);
+	}
+	
+	
 }

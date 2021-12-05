@@ -1,5 +1,7 @@
 package com.epam.test.service;
 
+import java.util.List;
+
 import com.epam.test.model.OrderModel;
 import com.epam.test.model.OrderRequest;
 
@@ -15,5 +17,18 @@ public interface OrderService {
 	 * @return
 	 */
 	OrderModel placeOrder(OrderRequest order);
+
+	/**
+	 * gets list of all the orders in the system. 
+	 * @return
+	 */
+	List<OrderModel> getAllOrders();
+
+	/**
+	 * gets a particular order based on orderId.
+	 * @param orderId
+	 * @return
+	 */
+	OrderModel getOrderById(long orderId);
 
 }

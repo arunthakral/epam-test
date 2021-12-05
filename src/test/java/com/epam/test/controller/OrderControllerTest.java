@@ -12,6 +12,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyEmitterReturnValueHandler;
 
 import com.epam.test.enums.ProductEnum;
 import com.epam.test.model.OrderEntryItem;
@@ -19,6 +20,8 @@ import com.epam.test.model.OrderModel;
 import com.epam.test.model.OrderRequest;
 import com.epam.test.model.ProductModel;
 import com.epam.test.service.OrderService;
+
+import ch.qos.logback.core.pattern.util.RegularEscapeUtil;
 
 @ExtendWith(MockitoExtension.class)
 public class OrderControllerTest {
@@ -54,4 +57,30 @@ public class OrderControllerTest {
 	OrderModel order = 	response.getBody();
 	assertEquals(order.getCustomerId(), "Arun");
 	}
+	
+
+	@Test
+	public void testGetAllOrders() {
+		List<OrderModel> orders = new 	ArrayList<>();
+		orders.add(new OrderModel("Arun"));
+		orders.add(new OrderModel("Arun2"));
+		orders.add(new OrderModel("Arun4"));
+		
+		Mockito.when(orderService.getAllOrders()).thenReturn(orders);
+		
+		ResponseEntity<List<OrderModel>> response = controller.getAllOrders();
+		
+		assertEquals(3, response.getBody().size());
+	}
+	@Test
+	public void testGetOrderById() {
+		OrderModel o = new OrderModel("Arun4");
+		
+		Mockito.when(orderService.getOrderById(Mockito.anyLong())).thenReturn(o);
+		
+		ResponseEntity<OrderModel> response = controller.getOrderById(Long.valueOf(324798));
+		
+		assertEquals("Arun4", response.getBody().getCustomerId());
+	}
+
 }
