@@ -11,7 +11,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import com.epam.test.ProductEnum;
+import com.epam.test.enums.ProductEnum;
 import com.epam.test.model.OrderEntryItem;
 import com.epam.test.model.OrderModel;
 import com.epam.test.model.OrderRequest;

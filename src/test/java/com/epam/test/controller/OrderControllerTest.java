@@ -11,10 +11,9 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.http.ResponseEntity;
 
-import com.epam.test.ProductEnum;
+import com.epam.test.enums.ProductEnum;
 import com.epam.test.model.OrderEntryItem;
 import com.epam.test.model.OrderModel;
 import com.epam.test.model.OrderRequest;
