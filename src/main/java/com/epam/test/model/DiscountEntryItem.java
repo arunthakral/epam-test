@@ -9,7 +9,7 @@ public class DiscountEntryItem {
 	private ProductModel product;
 	private String description;
 	private int quantity;
-	private BigDecimal price;
+	private BigDecimal price = BigDecimal.ZERO;
 	private Currency currency = Currency.getInstance(Locale.US);
 
 	

@@ -18,8 +18,10 @@ public class OrderEntryItem {
 	@ApiModelProperty(notes = "price",name="price",hidden = true)
 	private BigDecimal entryPrice;
 	
-	
 	private Currency currency = Currency.getInstance(Locale.US);
+	
+	@ApiModelProperty(notes = "discount",name="discount",hidden = true)
+	private  DiscountEntryItem discount;
 	
 
 	public OrderEntryItem() {
@@ -63,7 +65,23 @@ public class OrderEntryItem {
 	@Override
 	public String toString() {
 		return "OrderEntryItem [product=" + product + ", quantity=" + quantity + ", entryPrice=" + entryPrice
-				+ ", currency=" + currency + "]";
+				+ ", currency=" + currency + ", discount=" + discount + "]";
+	}
+
+
+	/**
+	 * @return the discount
+	 */
+	public DiscountEntryItem getDiscount() {
+		return discount;
+	}
+
+
+	/**
+	 * @param discount the discount to set
+	 */
+	public void setDiscount(DiscountEntryItem discount) {
+		this.discount = discount;
 	}
 	
 	
