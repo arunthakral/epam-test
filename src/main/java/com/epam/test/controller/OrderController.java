@@ -39,7 +39,7 @@ public class OrderController {
 	 * @param request OrderRequest {@linkplain OrderRequest}
 	 * @return
 	 */
-	@PostMapping(path = "/placeOrder", produces = MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping( produces = MediaType.APPLICATION_JSON_VALUE)
 	@ApiOperation(value = "Places the order for a user. with items in the list.", response = OrderModel.class,
 	httpMethod = "POST", produces = MediaType.APPLICATION_JSON_VALUE )
 	@ApiResponses(value = { 
@@ -58,7 +58,7 @@ public class OrderController {
 	 * gets list of all the orders.
 	 * @return
 	 */
-	@GetMapping("/all")
+	@GetMapping()
 	public ResponseEntity<List<OrderModel>> getAllOrders(){
 		
 		List<OrderModel> orders = orderService.getAllOrders();
